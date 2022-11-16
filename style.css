@@ -1,3 +1,23 @@
 body {
     background-color: brown;
 }
+
+h1 {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: goldenrod;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.sketchpad {
+
+}
+
+.controls {
+
+}
