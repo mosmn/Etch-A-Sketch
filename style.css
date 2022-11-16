@@ -10,14 +10,29 @@ h1 {
 
 .container {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    gap: 50px;
+
 }
 
 .sketchpad {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+    grid-gap: 1px;
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+}
 
+.box {
+    background-color: white;
 }
 
 .controls {
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }

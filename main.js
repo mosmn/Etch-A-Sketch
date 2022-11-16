@@ -26,3 +26,13 @@ PROJECT: create a sketchpad with controls like grid size, color, eraser and a re
  END 
 
 */ 
+
+// 1) create a 16 x 16 grid by creating a element under class sketchpad
+
+let sketchpad = document.querySelector('.sketchpad');
+
+for (let i = 0; i < 256; i++) {
+    let box = document.createElement('div');
+    box.classList.add('box');
+    sketchpad.appendChild(box);
+}
