@@ -17,17 +17,18 @@ h1 {
 }
 
 .sketchpad {
-    display: grid;
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(16, 1fr);
-    grid-gap: 1px;
-    width: 500px;
-    height: 500px;
-    border: 1px solid black;
+	outline:2px solid #000;
+	font-size: 0;
+	height: 500px;
+	width: 500px;
+	padding: 0;
+	border: none;
 }
 
 .box {
-    background-color: white;
+	border:none;
+	outline:1px solid rgb(0, 0, 0);
+	display:inline-block;
 }
 
 .controls {
