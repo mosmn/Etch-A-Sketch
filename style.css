@@ -8,15 +8,20 @@ h1 {
     color: goldenrod;
 }
 
+/* h1:hover {
+} */
+
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     gap: 50px;
 
 }
 
 .sketchpad {
+    background-color: white;
 	outline:2px solid #000;
 	font-size: 0;
 	height: 500px;
@@ -27,7 +32,6 @@ h1 {
 
 .box {
 	border:none;
-	outline:1px solid rgb(0, 0, 0);
 	display:inline-block;
 }
 

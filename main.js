@@ -23,8 +23,10 @@ PROJECT: create a sketchpad with controls like grid size, color, eraser and a re
  BEGIN 
     1) create a 16 x 16 grid by looping through 16 rows and 16 columns and adding a div to the sketchpad
     2) make the code in step 1 dynamic so that the user can choose the size of the grid
+    3) add a color to the boxs when the user holds down the mouse click while hovering over the boxs
  END 
 
+ git commit -m "added a color to the boxs when the user holds down the mouse click while hovering over the boxs"
 */ 
 
 // 1) create a 16 x 16 grid by looping through 16 rows and 16 columns and adding a div to the sketchpad
@@ -65,5 +67,23 @@ function createGrid(size) {
     }
     );
 }
-let size = prompt('Enter the size of the grid');
-createGrid(size);
+createGrid(30);
+
+// 3) add a color to the boxs only if mouse is held down and hovering over the boxs at the same time
+let box = document.querySelectorAll('.box');
+
+box.forEach((box) => {
+    box.addEventListener('mousedown', () => {
+        mouseDown = true;
+    });
+    box.addEventListener('mouseup', () => {
+        mouseDown = false;
+    });
+    box.addEventListener('mouseover', () => {
+        if (mouseDown) {
+            box.style.backgroundColor = 'black';
+        }
+    });
+}
+);
+
