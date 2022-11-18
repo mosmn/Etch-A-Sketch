@@ -12,13 +12,18 @@
     <h1>Etch A Sketch</h1>
     <div class="container">
         <div class="controls">
-            <button id="color">Color change</button>
-            <button id="resize">Resize</button>
-            <button id="erase">Erase</button>
+            <div class="color-picker">
+                <label for="color">Color</label>
+                <input type="color" id="color" value="#000000">
+            </div>
+            <div class="size-picker">
+                <label for="size">Size</label>
+                <input type="range" id="size" min="2" max="64" value="16">
+            </div>
+            <button id="eraser">Eraser</button>
             <button id="clear">Clear</button>
         </div>
         <div class="sketchpad">
-            
         </div>
     </div>
 </body>
