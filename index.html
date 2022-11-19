@@ -13,15 +13,18 @@
     <div class="container">
         <div class="controls">
             <div class="color-picker">
-                <label for="color">Color</label>
                 <input type="color" id="color" value="#000000">
             </div>
             <div class="size-picker">
-                <label for="size">Size</label>
-                <input type="range" id="size" min="2" max="64" value="16">
+                <input type="range" id="size" min="2" max="64" value="32">
+                <output id="value">32</output>
             </div>
-            <button id="eraser">Eraser</button>
-            <button id="clear">Clear</button>
+            <button id="eraser">
+                <img src="imgs/eraser.png"eraser">
+            </button>
+            <button id="clear">
+                <img src="imgs/dust.png" alt="clear">
+            </button>
         </div>
         <div class="sketchpad">
         </div>

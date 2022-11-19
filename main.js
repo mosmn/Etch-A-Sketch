@@ -21,35 +21,51 @@ PROJECT: create a sketchpad with controls like grid size, color, eraser and a re
  Algorithm:
  
  BEGIN 
-    1) create a 16 x 16 grid by looping through 16 rows and 16 columns and adding a div to the sketchpad
-    2) make the code in step 1 dynamic so that the user can choose the size of the grid
-    3) add a color to the boxs when the user holds down the mouse click while hovering over the boxs
-    4) edit step 1 so that the size of the grid is taken from the inpute range slider
+    1) show the value of the input range above the slider thumb
+    2) create a grid of boxes with the size of the input range
+    3) add a color to the box when the user holds down the mouse click and hovers over the boxs
  END 
 
- git commit -m "added a color to the boxs when the user holds down the mouse click while hovering over the boxs"
+ git commit -m "done styling the con
 */ 
 
-// 1) create a 16 x 16 grid by looping through 16 rows and 16 columns and adding a div to the sketchpad
+// 1) show the value of the input range above the slider thumb
+const slider = document.querySelector('#size');
+const output = document.querySelector('#value');
 
-// let sketchpad = document.querySelector('.sketchpad');
+slider.addEventListener('input', () => {
+    setBubble(slider, output);
+});
 
-// for (let i = 0; i < 16; i++) {
-//     for (let j = 0; j < 16; j++) {
-//         let box = document.createElement('div');
-//         box.classList.add('box');
-//         sketchpad.appendChild(box);
-//     }
-// }
-// // the width and height of the sketchpad is 500px therefore the width and height of each box is 500/16 = 31.25px
+function setBubble(slider, output) {
+    const val = slider.value;
+    const min = slider.min ? slider.min : 2;
+    const max = slider.max ? slider.max : 64;
+    const newVal = Number(((val - min) * 100) / (max - min));
+    output.innerHTML = val;
+
+    output.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
+}
+
+
 // let box = document.querySelectorAll('.box');
+
 // box.forEach((box) => {
-//     box.style.width = '31.25px';
-//     box.style.height = '31.25px';
+//     box.addEventListener('mousedown', () => {
+//         mouseDown = true;
+//     });
+//     box.addEventListener('mouseup', () => {
+//         mouseDown = false;
+//     });
+//     box.addEventListener('mouseover', () => {
+//         if (mouseDown) {
+//             box.style.backgroundColor = 'black';
+//         }
+//     });
 // }
 // );
 
-// 2) make the code in step 1 dynamic so that the user can choose the size of the grid
+// 4) edit step 1 so that the size of the grid is taken from the inpute range slider
 
 // let sketchpad = document.querySelector('.sketchpad');
 
@@ -68,51 +84,14 @@ PROJECT: create a sketchpad with controls like grid size, color, eraser and a re
 //     }
 //     );
 // }
-// createGrid(64);
 
-// 3) add a color to the boxs only if mouse is held down and hovering over the boxs at the same time
-let box = document.querySelectorAll('.box');
+// let slider = document.querySelector('#size');
 
-box.forEach((box) => {
-    box.addEventListener('mousedown', () => {
-        mouseDown = true;
-    });
-    box.addEventListener('mouseup', () => {
-        mouseDown = false;
-    });
-    box.addEventListener('mouseover', () => {
-        if (mouseDown) {
-            box.style.backgroundColor = 'black';
-        }
-    });
-}
-);
+// slider.addEventListener('change', () => {
+//     let size = slider.value;
+//     createGrid(size);
+// });
 
-// 4) edit step 1 so that the size of the grid is taken from the inpute range slider
-
-let sketchpad = document.querySelector('.sketchpad');
-
-function createGrid(size) {
-    for (let i = 0; i < size; i++) {
-        for (let j = 0; j < size; j++) {
-            let box = document.createElement('div');
-            box.classList.add('box');
-            sketchpad.appendChild(box);
-        }
-    }
-    let box = document.querySelectorAll('.box');
-    box.forEach((box) => {
-        box.style.width = `${500/size}px`;
-        box.style.height = `${500/size}px`;
-    }
-    );
-}
-
-let slider = document.querySelector('#size');
-
-slider.addEventListener('change', () => {
-    let size = slider.value;
-    createGrid(size);
-});
+// console.log(slider.value);
 
 
