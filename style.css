@@ -8,9 +8,6 @@ h1 {
     color: goldenrod;
 }
 
-/* h1:hover {
-} */
-
 .container {
     display: flex;
     justify-content: center;
@@ -25,8 +22,8 @@ h1 {
 	position: relative;
 	outline:2px solid #000;
 	font-size: 0;
-	height: 500px;
-	width: 500px;
+	height: 600px;
+	width: 600px;
 	padding: 0;
 	border: none;
 }
@@ -35,7 +32,7 @@ h1 {
 	margin:0;
 	padding:0;
 	border:none;
-	outline:1px solid #000;
+	outline: none;
 	display:inline-block;
 }
 

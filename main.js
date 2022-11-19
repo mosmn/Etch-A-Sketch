@@ -25,7 +25,8 @@ PROJECT: create a sketchpad with controls like grid size, color, eraser and a re
     2) create a grid of boxes with the size of the input range
     3) change the size of the boxes when the input range changes
     4) change the color of the boxes when the user holds down the mouse click and hover over the boxes at the same time
-    5) when the size of the grid changes, the color of the boxes should be reset and the user should start over
+    5) add a function to the eraser button to erase the color of the boxes
+    6) add a function to the reset button to reset the color of the boxes to white and size of the grid to 32
  END 
 
  git commit -m " done with the input range its fully functional"
@@ -54,9 +55,7 @@ let sketchpad = document.querySelector('.sketchpad');
 let size = slider.value;
 
 function createGrid(size) {
-    // first loop to create the rows
     for (let i = 0; i < size; i++) {
-        // second loop to create the columns
         for (let j = 0; j < size; j++) {
             let box = document.createElement('div');
             box.classList.add('box');
@@ -65,8 +64,8 @@ function createGrid(size) {
     }
     let box = document.querySelectorAll('.box');
     box.forEach((box) => {
-        box.style.width = `${500/size}px`;
-        box.style.height = `${500/size}px`;
+        box.style.width = `${600/size}px`;
+        box.style.height = `${600/size}px`;
     }
     );
 }
@@ -74,80 +73,87 @@ console.log(size);
 console.log(createGrid(size));
 
 // 3) change the size of the boxes when the input range changes
-slider.addEventListener('input', () => {
-    size = slider.value;
-    console.log(size);
-    let box = document.querySelectorAll('.box');
-    box.forEach((box) => {
-        box.remove();
+function changeGridSize() {
+    slider.addEventListener('input', () => {
+        size = slider.value;
+        console.log(size);
+        let box = document.querySelectorAll('.box');
+        box.forEach((box) => {
+            box.remove();
+        });
+        createGrid(size);
+        changeColor();
     });
-    createGrid(size);
-});
+    
+}
+changeGridSize();
 
 // 4) change the color of the boxes when the user holds down the mouse click and hover over the boxes at the same time
+const colorPicker = document.querySelector('#color');
+let mouseDown = false;
 
-let box = document.querySelectorAll('.box');
-box.forEach((box) => {
+function changeColor() {
+    colorPicker.addEventListener('input', () => {
+    let box = document.querySelectorAll('.box');
+    box.forEach((box) => {
     box.addEventListener('mousedown', () => {
-        box.classList.add('color');
+        mouseDown = true;
     });
     box.addEventListener('mouseup', () => {
-        box.classList.remove('color');
+        mouseDown = false;
+    });
+    box.addEventListener('mouseover', () => {
+        if (mouseDown) {
+            box.style.backgroundColor = colorPicker.value;
+        }
+    });
+});
+});
+}
+changeColor();
+
+const colorPickerLabel = document.querySelector('.color-picker');
+
+div = document.createElement('div');
+div.classList.add('color-picker-label');
+div.textContent = 'Pick a color to start';
+colorPickerLabel.appendChild(div);
+
+colorPicker.addEventListener('input', () => {
+    div.textContent = '';
+});
+
+// 5) add a function to the eraser button to erase the color of the boxes
+const eraser = document.querySelector('#eraser');
+
+eraser.addEventListener('click', () => {
+    let box = document.querySelectorAll('.box');
+    box.forEach((box) => {
+    box.addEventListener('mousedown', () => {
+        mouseDown = true;
+    });
+    box.addEventListener('mouseup', () => {
+        mouseDown = false;
+    });
+    box.addEventListener('mouseover', () => {
+        if (mouseDown) {
+            box.style.backgroundColor = 'white';
+        }
+    });
+}
+);
+});
+
+// 6) add a function to the reset button to reset the color of the boxes to white
+const reset = document.querySelector('#clear');
+
+reset.addEventListener('click', () => {
+    let box = document.querySelectorAll('.box');
+    box.forEach((box) => {
+        box.style.backgroundColor = 'white';
     });
 });
 
-// 5) when the size of the grid changes, the color of the boxes should be reset and the user should start over
 
-
-
-
-
-
-
-// let box = document.querySelectorAll('.box');
-
-// box.forEach((box) => {
-//     box.addEventListener('mousedown', () => {
-//         mouseDown = true;
-//     });
-//     box.addEventListener('mouseup', () => {
-//         mouseDown = false;
-//     });
-//     box.addEventListener('mouseover', () => {
-//         if (mouseDown) {
-//             box.style.backgroundColor = 'black';
-//         }
-//     });
-// }
-// );
-
-// 4) edit step 1 so that the size of the grid is taken from the inpute range slider
-
-// let sketchpad = document.querySelector('.sketchpad');
-
-// function createGrid(size) {
-//     for (let i = 0; i < size; i++) {
-//         for (let j = 0; j < size; j++) {
-//             let box = document.createElement('div');
-//             box.classList.add('box');
-//             sketchpad.appendChild(box);
-//         }
-//     }
-//     let box = document.querySelectorAll('.box');
-//     box.forEach((box) => {
-//         box.style.width = `${500/size}px`;
-//         box.style.height = `${500/size}px`;
-//     }
-//     );
-// }
-
-// let slider = document.querySelector('#size');
-
-// slider.addEventListener('change', () => {
-//     let size = slider.value;
-//     createGrid(size);
-// });
-
-// console.log(slider.value);
 
 
