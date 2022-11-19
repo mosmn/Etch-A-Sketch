@@ -22,6 +22,7 @@ h1 {
 
 .sketchpad {
     background-color: white;
+	position: relative;
 	outline:2px solid #000;
 	font-size: 0;
 	height: 500px;
@@ -31,7 +32,10 @@ h1 {
 }
 
 .box {
+	margin:0;
+	padding:0;
 	border:none;
+	outline:1px solid #000;
 	display:inline-block;
 }
 

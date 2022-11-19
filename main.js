@@ -23,10 +23,12 @@ PROJECT: create a sketchpad with controls like grid size, color, eraser and a re
  BEGIN 
     1) show the value of the input range above the slider thumb
     2) create a grid of boxes with the size of the input range
-    3) add a color to the box when the user holds down the mouse click and hovers over the boxs
+    3) change the size of the boxes when the input range changes
+    4) change the color of the boxes when the user holds down the mouse click and hover over the boxes at the same time
+    5) when the size of the grid changes, the color of the boxes should be reset and the user should start over
  END 
 
- git commit -m "done styling the con
+ git commit -m " done with the input range its fully functional"
 */ 
 
 // 1) show the value of the input range above the slider thumb
@@ -46,6 +48,60 @@ function setBubble(slider, output) {
 
     output.style.left = `calc(${newVal}% + (${8 - newVal * 0.15}px))`;
 }
+
+// 2) create a grid of boxes with the size of the input range slider value
+let sketchpad = document.querySelector('.sketchpad');
+let size = slider.value;
+
+function createGrid(size) {
+    // first loop to create the rows
+    for (let i = 0; i < size; i++) {
+        // second loop to create the columns
+        for (let j = 0; j < size; j++) {
+            let box = document.createElement('div');
+            box.classList.add('box');
+            sketchpad.appendChild(box);
+        }
+    }
+    let box = document.querySelectorAll('.box');
+    box.forEach((box) => {
+        box.style.width = `${500/size}px`;
+        box.style.height = `${500/size}px`;
+    }
+    );
+}
+console.log(size);
+console.log(createGrid(size));
+
+// 3) change the size of the boxes when the input range changes
+slider.addEventListener('input', () => {
+    size = slider.value;
+    console.log(size);
+    let box = document.querySelectorAll('.box');
+    box.forEach((box) => {
+        box.remove();
+    });
+    createGrid(size);
+});
+
+// 4) change the color of the boxes when the user holds down the mouse click and hover over the boxes at the same time
+
+let box = document.querySelectorAll('.box');
+box.forEach((box) => {
+    box.addEventListener('mousedown', () => {
+        box.classList.add('color');
+    });
+    box.addEventListener('mouseup', () => {
+        box.classList.remove('color');
+    });
+});
+
+// 5) when the size of the grid changes, the color of the boxes should be reset and the user should start over
+
+
+
+
+
 
 
 // let box = document.querySelectorAll('.box');
