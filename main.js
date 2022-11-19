@@ -26,10 +26,8 @@ PROJECT: create a sketchpad with controls like grid size, color, eraser and a re
     3) change the size of the boxes when the input range changes
     4) change the color of the boxes when the user holds down the mouse click and hover over the boxes at the same time
     5) add a function to the eraser button to erase the color of the boxes
-    6) add a function to the reset button to reset the color of the boxes to white and size of the grid to 32
+    6) add a function to the reset button to reset the color of the boxes to white
  END 
-
- git commit -m " done with the input range its fully functional"
 */ 
 
 // 1) show the value of the input range above the slider thumb
